@@ -2,6 +2,7 @@
 from osv import osv
 from oorq.decorators import job
 from tools import config
+from ast import literal_eval as eval
 import os
 
 
