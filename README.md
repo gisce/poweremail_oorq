@@ -1,3 +1,3 @@
-# Poweremail with OORQ
+# ⚠️ Archived Repo ⚠️ 
 
-Simple module to send emails in background using oorq
+Now is integrated into https://github.com/gisce/poweremail-modules
