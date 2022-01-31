@@ -2,6 +2,8 @@
 from osv import osv
 from oorq.decorators import job
 from tools import config
+from ast import literal_eval as eval
+import os
 
 
 class PoweremailMailbox(osv.osv):
@@ -19,6 +21,10 @@ class PoweremailMailbox(osv.osv):
                      self).send_this_mail(cursor, uid, ids, context)
 
     def send_this_mail(self, cursor, uid, ids=None, context=None):
+        if not eval(os.environ.get('OORQ_ASYNC', 1)):
+            return super(PoweremailMailbox, self).send_this_mail(
+                cursor, uid, ids, context=context
+            )
         if not isinstance(ids, (tuple, list)):
             ids = [ids]
         for mail in self.read(cursor, uid, ids, ['priority']):
